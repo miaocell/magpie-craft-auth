@@ -15,9 +15,9 @@
 
 > 完整记录见 [CHANGELOG.md](CHANGELOG.md)，最新的在最上面。
 
+- **修了一个会把账号用废的 bug**（`0.1.3`）。每轮对话都会在账号里留一个项目，插件之前不删，堆到站点上限（50 个）后所有新对话都回 `30006`，接着并发槽位也放不掉。现在每轮结束自动删掉会话，跑完项目数回到 0。老账号建议先跑 `node test/prune.mjs` 清理存量。
 - **换成游点灵官网的图标**（`0.1.2`）。之前是手绘的抽象占位，跟站点品牌没关系；现在从官网 favicon 轮廓追踪还原成矢量，紫色圆角方块配白色四角星，插件列表里一眼能认出来。
 - **站点下线 GLM-5.4，清单跟着变成 4 个**（`0.1.1`）。插件本来就每次从 `/api/chathost/model-options` 现拉，不用改代码——`KNOWN` 表里留着 GLM 条目，站点恢复时会直接显示正确名称。
-- **首个版本**（`0.1.0`）。粘贴 Cookie 或临时窗口扫码登录，账号模型菜单全量接入，额度面板报真实积分、每日登录赠送状态和各批次过期日。
 
 ## 拿到的模型
 
@@ -107,7 +107,11 @@ Linux 上对话、流式回复、积分查询都能用——这些只依赖 `htt
 
 **`X-Client-Version: 21` 和 `X-Client-Type: pc` 缺一不可。** 少了就回 `10001 请求参数错误`——这个坑很隐蔽，body 逐字对齐了还是失败，因为问题在头上。站点升级前端后如果开始报 10001，把版本号改成新的即可（从网页的请求头里看）。
 
-**`conversation_id` 不能自己编。** 会话得先用 `POST /api/ms/conversations`（body 是 `{title, raw_description}`）建出来，服务端返回的 id 才能用在 send 里，否则回 `10006 会话不存在`。前端页面上 `/chat/<id>` 那个 id 就是它。
+**`conversation_id` 不能自己编。** 会话得先用 `POST /api/ms/conversations`（body 是 `{title, raw_description}`）建出来，服务端返回的 id 才能用在 send 里，否则回 `10006 会话不存在`。
+
+**每个会话在账号里就是一个项目，站点对项目数有硬上限。** 实测 50 个，到顶后 `POST /api/ms/conversations` 回 `30006 已达到项目数量上限`，之后整个插件都用不了。所以插件每轮对话结束都会 `DELETE /api/ms/conversations/<id>` 把会话删掉——不发这个请求，跑几十轮就会把账号用废。
+
+**删除比取消快，别反过来。** 收尾时先 `DELETE`，删不掉才 `POST /api/chathost/cancel` 补一刀。实测 DELETE 对「正在处理中」的会话也直接成功（几百毫秒），而 cancel 在同一个会话上会一直挂着等。
 
 **登录态只在 HttpOnly cookie 里，但服务端直连不校验 TLS / HTTP2 指纹。** 这一点和豆包完全不同：带对 Cookie 加两个客户端头，Node 直接就能打上游，不需要浏览器，也不需要页内 fetch。
 
@@ -162,6 +166,10 @@ C='...' node test/list-site-models.mjs
 
 # 诊断某个模型为什么不出正文
 C='...' M='Hy4' node test/diag-model.mjs
+
+# 清理账号里堆积的项目（先演习，看清数量再加 --delete）
+node test/prune.mjs
+node test/prune.mjs --delete --keep 3
 ```
 
 六个脚本跑一遍会真的消耗几点积分（每个脚本发一到两轮对话），别当无副作用的冒烟测试反复刷。
