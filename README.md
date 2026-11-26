@@ -1,5 +1,9 @@
 # magpie-craft-auth
 
+<a href="https://linux.do"><img src="https://img.shields.io/badge/LINUX%20DO-%E7%A4%BE%E5%8C%BA-FFB003?style=flat-square" alt="LINUX DO 社区" /></a>
+
+> 感谢 LINUX DO 社区，以及所有反馈、测试和帮忙定位问题的人，名单见 [CREDITS.md](CREDITS.md)。
+
 **无需登录游点灵网页，本机无需开着浏览器。** 把腾讯游点灵（CraftBuddy，`craft.qq.com`）的积分接成 [magpie](https://usemagpie.ai) 网关上的一组模型：登录一次之后，Claude Code、Codex、OpenCode 或任何走 OpenAI 兼容接口的客户端都能直接调用，消耗的是这个游点灵账号的积分。
 
 - **不用装客户端，也不用开浏览器。** 模型调用、积分查询全走 HTTP。登录用粘贴 Cookie 或插件开的临时窗口扫码即可。
@@ -159,4 +163,16 @@ C='...' node test/list-site-models.mjs
 C='...' M='Hy4' node test/diag-model.mjs
 ```
 
-版本号约定见 [VERSIONING.md](VERSIONING.md)。
+六个脚本跑一遍会真的消耗几点积分（每个脚本发一到两轮对话），别当无副作用的冒烟测试反复刷。
+
+## 与游点灵的关系
+
+非官方插件，与腾讯及游点灵开发方无关。上游是网页版的内部接口，站点改版可能失效。验证于 2026-11。
+
+`craft.qq.com` 的积分是站点给账号的创作额度，不是付费订阅。用插件消耗它的方式，和你在网页上聊天没有区别，扣的还是那份额度。
+
+## 许可
+
+MIT。
+
+版本号约定见 [VERSIONING.md](VERSIONING.md)，贡献者名单见 [CREDITS.md](CREDITS.md)。

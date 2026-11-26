@@ -10,6 +10,7 @@
     "registry-entry.json",
     "README.md",
     "VERSIONING.md",
+    "CREDITS.md",
     "LICENSE"
   ],
   "scripts": {
