@@ -2,7 +2,7 @@
 
 <a href="https://linux.do"><img src="https://img.shields.io/badge/LINUX%20DO-%E7%A4%BE%E5%8C%BA-FFB003?style=flat-square" alt="LINUX DO 社区" /></a>
 
-> 感谢 LINUX DO 社区，以及所有反馈、测试和帮忙定位问题的人，名单见 [CREDITS.md](CREDITS.md)。
+> 感谢所有人的反馈和建议，名单见 [CREDITS.md](CREDITS.md)。
 
 **无需登录游点灵网页，本机无需开着浏览器。** 把腾讯游点灵（CraftBuddy，`craft.qq.com`）的积分接成 [magpie](https://usemagpie.ai) 网关上的一组模型：登录一次之后，Claude Code、Codex、OpenCode 或任何走 OpenAI 兼容接口的客户端都能直接调用，消耗的是这个游点灵账号的积分。
 
