@@ -1,0 +1,12 @@
+{
+  "package": "magpie-craft-auth",
+  "name": "游点灵",
+  "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiM1NTY1ZmIiLz48cmVjdCB4PSIxMiIgeT0iMzQiIHdpZHRoPSIxMiIgaGVpZ2h0PSI4IiByeD0iMiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjk1Ii8+PHJlY3QgeD0iMjYiIHk9IjM0IiB3aWR0aD0iMTIiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii43MiIvPjxyZWN0IHg9IjQwIiB5PSIzNCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOTUiLz48cGF0aCBkPSJNMTQgMjBoMzZhNCA0IDAgMCAxIDQgNHY2SDEwdi02YTQgNCAwIDAgMSA0LTR6IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOTIiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjQ2IiByPSIzIiBmaWxsPSIjZmZmIi8+PC9zdmc+",
+  "providers": [
+    "craft"
+  ],
+  "summary": {
+    "en": "Tencent CraftBuddy (游点灵, craft.qq.com) as a magpie provider: sign in by pasting a cookie or from a one-off browser window. Every model in the account's menu becomes available — Auto, DeepSeek V4.1 Flash, and the Hunyuan Hy4 pair — with the real credit balance, the daily login grant, and every expiry batch. No browser or desktop client needed for chat.",
+    "zh": "把腾讯游点灵（CraftBuddy）接进 magpie：粘贴 Cookie 或让插件开一个临时窗口扫码登录。账号菜单里的全部模型都会出现（Auto、DeepSeek V4.1 Flash、混元 Hy4 两档），卡片上显示真实积分余额、每日登录赠送状态和各批次过期日。模型调用、积分查询、模型列表都不需要开着浏览器。"
+  }
+}

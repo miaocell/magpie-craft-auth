@@ -1,0 +1,48 @@
+{
+  "name": "magpie-craft-auth",
+  "version": "0.1.1",
+  "description": "游点灵：把腾讯游点灵（CraftBuddy）的积分变成 magpie 网关上的模型，供其他 Agent 使用",
+  "type": "module",
+  "main": "./index.mjs",
+  "files": [
+    "index.mjs",
+    "lib",
+    "registry-entry.json",
+    "README.md",
+    "VERSIONING.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check index.mjs",
+    "test:e2e": "node test/e2e.mjs",
+    "test:stream": "node test/stream-check.mjs",
+    "test:raw": "node test/raw.mjs"
+  },
+  "keywords": [
+    "magpie",
+    "opencode",
+    "opencode-plugin",
+    "craft",
+    "craftbuddy",
+    "tencent",
+    "deepseek",
+    "hunyuan"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
+  ],
+  "magpie": {
+    "name": "游点灵",
+    "maxConcurrency": 1,
+    "summary": {
+      "en": "Tencent CraftBuddy (craft.qq.com) credits as magpie models. Sign in by pasting a cookie or through a browser window; the account's whole model menu (Auto / DeepSeek / Hunyuan / GLM) becomes available, with real credit balance and expiry.",
+      "zh": "把腾讯游点灵的积分变成 magpie 的模型。粘贴 Cookie 或在插件弹出的窗口里登录，账号菜单里的全部模型（Auto / DeepSeek / 混元 / GLM）都能用，并汇报真实积分余额与过期时间。"
+    }
+  }
+}

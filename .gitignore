@@ -1,0 +1,10 @@
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+
+# 凭据与本地状态，绝不入库
+cookies.json
+accounts.json
+.env
+.vault/
